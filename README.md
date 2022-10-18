@@ -1,8 +1,5 @@
-# imall
 
-### 简介
 
-imall 是一个本地生活服务类商城，包括微信小程序、商家后台、服务端。
 
 ### 项目演示
 
@@ -110,18 +107,4 @@ $ npm install
 |---|---|---|---|---|---|
 | ![](https://github.com/zchengo/imall/blob/main/demo/res/a1.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a2.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a3.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a4.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a5.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a6.png) |
 
-说明：以上演示图片素材来源于网络，部分图标来源 [www.iconfont.cn](https://www.iconfont.cn) ，图片、图标仅供学习使用。
 
-### 问题反馈
-
-在使用过程中遇到问题，你可以提交 Issues ，也可以 [知乎私信作者](https://www.zhihu.com/people/87-4-8-5) 或 [CSDN私信作者](https://blog.csdn.net/m0_47890251?spm=1000.2115.3001.5343)
-
-### 打赏作者
-
-使用微信扫描下方赞赏码，可以给作者打赏。
-
-<img width="200" height="200" src="https://github.com/zchengo/imall/blob/main/demo/rw/reward.jpg" />
-
-### 许可证
-
-[MIT License](https://github.com/zchengo/imall/blob/main/LICENSE) Copyright (c) 2022 zchengo
