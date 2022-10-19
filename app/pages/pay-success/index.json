@@ -1,0 +1,6 @@
+{
+  "backgroundColorBottom": "#ffffff",
+  "usingComponents": {
+    "mp-msg": "weui-miniprogram/msg/msg"
+  }
+}

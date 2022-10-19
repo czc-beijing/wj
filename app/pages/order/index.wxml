@@ -1,0 +1,47 @@
+<view class="container">
+    <view class="address" bind:tap="handleSelectAddress">
+        <i-icon name="map" size="50"/>
+        <view wx:if="{{address}}" class="address-info">
+            <view class="location-info">
+                {{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}
+            </view>
+            <view class="contact-info">{{address.userName}} {{address.telNumber}}</view>
+        </view>
+        <view wx:else class="notice-text">
+            选择地址
+        </view>
+    </view>
+   
+    <view class="container">
+        <mp-cells>
+            <mp-cell show-error prop="description" title="工地预约描述">
+                <textarea class="desc-textarea" bindinput="bindInputChange"
+                          data-field="description"
+                          value="{{formData.description}}"
+                          placeholder="必填，内容长度不少于 20 个字">
+                </textarea>
+        </mp-cell>
+            <mp-cell show-error prop="begin_date" title="开始日期">
+                <picker mode="date" value="{{formData.begin_date}}" bindchange="bindBeginDateChange">
+                    <view wx:if="{{formData.begin_date}}">{{ formData.begin_date }}</view>
+                    <view class="picker-placeholder" wx:else>服务开始日期</view>
+                </picker>
+            </mp-cell>
+            <mp-cell show-error prop="end_date" title="结束日期">
+                <picker mode="date" value="{{formData.end_date}}" bindchange="bindEndDateChange">
+                    <view wx:if="{{formData.end_date}}">{{ formData.end_date }}</view>
+                    <view class="picker-placeholder" wx:else>服务结束日期</view>
+                </picker>
+            </mp-cell>
+            
+        </mp-cells>
+    </view>
+    <view class="service-card">
+        <i-service-preview service="{{service}}"></i-service-preview>
+    </view>
+    
+    <view class="action-bar">
+        <i-button i-class="i-button" shape="semicircle" bind:tap="handleOrder">立即预约</i-button>
+        <i-safe-area area="bottom"/>
+    </view>
+</view>

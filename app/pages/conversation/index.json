@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-safe-area": "/components/safe-area/index",
+    "i-conversation-window": "./components/conversation-window"
+  }
+}

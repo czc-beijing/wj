@@ -1,0 +1,28 @@
+<wxs src="/common/wxs/order-status.wxs" module="statusConvert"></wxs>
+
+<view class="container">
+    <view class="row">
+        <view class="label">订单编号</view>
+        <view class="content">{{order.order_no}}</view>
+    </view>
+    <view class="row">
+        <view class="label">订单创建时间</view>
+        <view class="content">{{order.create_time}}</view>
+    </view>
+    <view class="row">
+        <view class="label">订单状态</view>
+        <view class="content order-status">{{statusConvert.convert(order.status)}}</view>
+    </view>
+    <view class="row">
+        <view class="label">工作开始时间</view>
+        <view class="content">{{order.begin_date}}</view>
+    </view>
+    <view class="row">
+        <view class="label">工作结束时间</view>
+        <view class="content">{{order.end_date}}</view>
+    </view>
+    <view class="row">
+        <view class="label">描述</view>
+        <view class="content">{{order.description}}</view>
+    </view>
+</view>

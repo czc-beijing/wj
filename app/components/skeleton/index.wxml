@@ -1,0 +1,10 @@
+<view wx:if="{{show}}" class="container">
+    <view class="skeleton-item">
+        <view class="left" style="height:{{leftBox}}rpx;"></view>
+        <view class="right" style="height: {{rightBox}}rpx">
+            <view class="row" wx:for="{{rows}}" wx:key="index"
+                  style="height:{{rowHeight}}rpx; width:{{rowWidth}}rpx"></view>
+        </view>
+    </view>
+</view>
+<slot wx:else></slot>

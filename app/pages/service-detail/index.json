@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "服务详情",
+  "usingComponents": {
+    "i-service-preview": "/components/service-preview/index",
+    "i-skeleton": "/components/skeleton/index"
+  }
+}

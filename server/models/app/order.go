@@ -20,6 +20,7 @@ type Order struct {
 	DetailInfo       string `gorm:"detail_info"`
 	BeginDate        string `gorm:"begin_date"`
 	EndDate          string `gorm:"end_date"`
+	Description      string `gorm:"description"`
 	ServiceSnap      string `gorm:"service_snap"`
 	Sid              uint64 `gorm:"sid"`
 	Status           int    `gorm:"status"`
@@ -87,8 +88,9 @@ type OrderCreateParam struct {
 		DetailInfoNew    string `json:"detailInfoNew"`
 		DetailInfo       string `json:"detailInfo"`
 	} `json:"address"`
-	BeginDate string `json:"begin_date"`
-	EndDate   string `json:"end_date"`
+	BeginDate   string `json:"begin_date"`
+	Description string `json:"description"`
+	EndDate     string `json:"end_date"`
 }
 
 type OrderInfo struct {
@@ -101,7 +103,10 @@ type OrderInfo struct {
 	Status       int          `json:"status"`
 	CreateTime   string       `json:"create_time"`
 	PublisherTel string       `json:"publisher_tel"`
+	BeginDate    string       `json:"begin_date"`
+	EndDate      string       `json:"end_date"`
 	Tel          string       `json:"tel"`
+	Description  string       `json:"description"`
 	Publisher    struct {
 		ID       uint64      `json:"id"`
 		Nickname string      `json:"nickname"`

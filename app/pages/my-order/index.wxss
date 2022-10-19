@@ -1,0 +1,40 @@
+@import "./index.skeleton.wxss";
+
+.container {
+    height: 100%;
+}
+
+.order-preview {
+    margin-bottom: 30rpx;
+}
+
+
+.title {
+    font-size: 45rpx;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15rpx;
+    margin-bottom: -5px;
+  }
+  
+  .action {
+    width: 20%;
+    height: 10px;
+  }
+  
+  .box {
+    height: 40px;
+  }
+
+  .view {
+    padding-top: 20rpx;
+    padding-bottom: 0rpx;
+  }
+  
+  .header_view_hide {
+    display: none;
+  }
+  
+  .header_view_show {
+    display: block;
+  }

@@ -1,0 +1,96 @@
+{
+  "pages": [
+    "pages/plaza/index",
+    "pages/message/index",
+    "pages/my/index",
+    "pages/publish/index",
+    "pages/my-service/index",
+    "pages/login/index",
+    "pages/service-detail/index",
+    "pages/service-management/index",
+    "pages/order/index",
+    "pages/conversation/index",
+    "pages/order-success/index",
+    "pages/my-order/index",
+    "pages/order-detail/index",
+    "pages/rating/index",
+    "pages/pay-success/index",
+    "pages/refund/index",
+    "pages/refund-detail/index",
+    "pages/refund-list/index",
+    "pages/publisher-success/index",
+    "pages/remark/index",
+    "pages/address/add",
+    "pages/address/edit",
+    "pages/address/list"
+  ],
+  "window": {
+    "backgroundColor": "#ffffff",
+    "backgroundColorTop": "#ffffff",
+    "backgroundColorBottom": "#efefef",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "军明挖机租赁",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "borderStyle": "white",
+    "selectedColor": "#FBC02D",
+    "color": "#8a8a8a",
+    "list": [
+      {
+        "pagePath": "pages/plaza/index",
+        "text": "广场",
+        "selectedIconPath": "images/tabbar/square-selected.png",
+        "iconPath": "images/tabbar/square.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "selectedIconPath": "images/tabbar/my-selected.png",
+        "iconPath": "images/tabbar/my.png"
+      },
+      {
+        "pagePath": "pages/publish/index",
+        "text": "发布",
+        "selectedIconPath": "images/tabbar/publish-selected.png",
+        "iconPath": "images/tabbar/publish.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "i-tabs": "/components/tabs/index",
+    "i-skeleton": "/components/skeleton/index",
+    "i-service-preview": "/components/service-preview/index",
+    "i-icon": "/components/icon/index",
+    "i-button": "/components/button/index",
+    "i-badge": "/components/badge/index",
+    "i-safe-area": "/components/safe-area/index",
+    "i-mask": "/components/mask/mask",
+    "i-order-preview": "/components/order-preview/index",
+    "i-order-info": "/components/order-info/index",
+    "i-rating": "/components/rating/index",
+    "i-rating-item": "/components/rating-item/index",
+    "i-detail-chat": "/components/detail-chat/index",
+    "i-show-status": "/components/show-status/index",
+    "i-avatar": "/components/avatar/index",
+    "i-uploader": "/components/image-uploader/image-uploader",
+    "i-grid": "/components/grid/grid",
+    "i-grid-item": "/components/grid-item/grid-item",
+    "mp-form": "weui-miniprogram/form/form",
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-uploader": "weui-miniprogram/uploader/uploader",
+    "mp-toptips": "weui-miniprogram/toptips/toptips",
+    "mp-msg": "weui-miniprogram/msg/msg"
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  "requiredPrivateInfos": [
+    "chooseAddress",
+    "chooseLocation"
+  ]
+}

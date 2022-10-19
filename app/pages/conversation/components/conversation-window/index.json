@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-safe-area": "/components/safe-area/index",
+    "i-message": "/pages/conversation/components/message/index"
+  }
+}

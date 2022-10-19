@@ -144,6 +144,7 @@ func (o *AppOrderService) Create(c *gin.Context, param app.OrderCreateParam) uin
 		EndDate:          param.EndDate,
 		ServiceSnap:      cast.ToString(serviceSnap),
 		Sid:              cast.ToUint64(sid),
+		Description:      param.Description,
 		Status:           0,
 		Created:          time.Now().Format("20060102"),
 		Updated:          time.Now().Format("20060102"),
@@ -215,6 +216,7 @@ func (o *AppOrderService) GetListByOpenId(param app.UserOrderQueryParam) ([]app.
 		if param.OpenId == item.PublisherOpenId {
 			orderInfo.Role = 1
 		}
+		orderInfo.Description = item.Description
 		if userInfo, exists := userMap[item.PublisherOpenId]; exists {
 			orderInfo.Publisher.ID = userInfo.Id
 			orderInfo.Publisher.Nickname = userInfo.Nickname
@@ -222,6 +224,9 @@ func (o *AppOrderService) GetListByOpenId(param app.UserOrderQueryParam) ([]app.
 			orderInfo.Publisher.Tel = "13429208394"
 			orderInfo.PublisherTel = "13429208394"
 		}
+		orderInfo.BeginDate = item.BeginDate
+		orderInfo.EndDate = item.EndDate
+		orderInfo.PublisherTel = "13429208394"
 		if userInfo, exists := userMap[item.ConsumerOpenId]; exists {
 			orderInfo.Consumer.ID = userInfo.Id
 			orderInfo.Consumer.Nickname = userInfo.Nickname

@@ -1,0 +1,9 @@
+@import "./index.skeleton.wxss";
+
+.container {
+    height: 100%;
+}
+
+.service-preview {
+    margin-bottom: 30rpx;
+}

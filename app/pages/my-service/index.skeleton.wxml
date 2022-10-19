@@ -1,0 +1,242 @@
+<!--
+此文件为开发者工具生成，生成时间: 2021/7/22 上午10:40:10
+使用方法：
+在 /Users/qinchen/workspace/mini_program/c-homemaking/pages/my-service/index.wxml 引入模板
+
+```
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 /Users/qinchen/workspace/mini_program/c-homemaking/pages/my-service/index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <view is="components/tabs/index" hidden="{{hideTabsLoading}}">
+        <view class="tabs-index--container">
+          <view class="tabs-index--tabs">
+            <view class="tabs-index--tab-item">
+              <view class="tabs-index--tab-label sk-transparent sk-text-18-7500-503 sk-text" data-index="0">
+                全部服务
+              </view>
+            </view>
+            <view class="tabs-index--tab-item">
+              <view class="tabs-index--tab-label tabs-index--active-tab sk-transparent sk-text-18-7500-366 sk-text" data-index="1">
+                待审核
+              </view>
+              <view class="tabs-index--divider"></view>
+            </view>
+            <view class="tabs-index--tab-item">
+              <view class="tabs-index--tab-label sk-transparent sk-text-18-7500-606 sk-text" data-index="2">
+                待发布
+              </view>
+            </view>
+            <view class="tabs-index--tab-item">
+              <view class="tabs-index--tab-label sk-transparent sk-text-18-7500-108 sk-text" data-index="3">
+                已发布
+              </view>
+            </view>
+          </view>
+          <view class="tabs-index--tab-planel">
+            <view>
+              <view class="service-preview" hidden="{{hideServiceLoading}}">
+                <view is="components/service-preview/index">
+                  <view class="service-preview-index--container">
+                    <view class="service-preview-index--left">
+                      <view class="service-preview-index--type-tag sk-transparent sk-text-18-7500-726 sk-text">
+                        在提供
+                      </view>
+                      <image class="service-preview-index--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="service-preview-index--right">
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--service-name sk-transparent sk-text-18-7500-191 sk-text">哈哈哈哈哈哈</view>
+                        <view class="service-preview-index--category-tag">
+                          <view is="components/icon/index">
+                            <view class="icon-index--iconfont icon-index--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size:17px;color:#f27013;"></view>
+                          </view>
+                          <view class="service-preview-index--tag-text sk-transparent sk-text-18-7500-830 sk-text">保洁</view>
+                        </view>
+                      </view>
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--publisher">
+                          <view is="components/avatar/index">
+                            <view class="avatar-index--container">
+                              <view class="avatar-index--avatar">
+                                <image class="avatar-index--avatar-image sk-image" style="width: 20px;height: 20px;border-radius: 50%"></image>
+                              </view>
+                              <view class="avatar-index--nickname sk-transparent sk-text-18-7500-379 sk-text" style="font-size: 11px">沁塵</view>
+                            </view>
+                          </view>
+                        </view>
+                        <view class="service-preview-index--score sk-transparent sk-text-18-7500-782 sk-text">★ 0</view>
+                      </view>
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--publish-date sk-transparent sk-text-18-7500-245 sk-text">2021-07-04 00:08:13</view>
+                      </view>
+                      <view class="service-preview-index--row service-preview-index--row-last">
+                        <view class="service-preview-index--price sk-transparent">
+                          <text class="service-preview-index--label sk-transparent sk-opacity">￥</text>155.00
+                        </view>
+                        <view class="service-preview-index--sales-volume sk-transparent sk-text-18-7500-736 sk-text">已售 0
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="service-preview" hidden="{{hideServiceLoading}}">
+                <view is="components/service-preview/index">
+                  <view class="service-preview-index--container">
+                    <view class="service-preview-index--left">
+                      <view class="service-preview-index--type-tag sk-transparent sk-text-18-7500-549 sk-text">
+                        在提供
+                      </view>
+                      <image class="service-preview-index--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="service-preview-index--right">
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--service-name sk-transparent sk-text-18-7500-258 sk-text">撒啊啊啊啊</view>
+                        <view class="service-preview-index--category-tag">
+                          <view is="components/icon/index">
+                            <view class="icon-index--iconfont icon-index--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size:17px;color:#f27013;"></view>
+                          </view>
+                          <view class="service-preview-index--tag-text sk-transparent sk-text-18-7500-647 sk-text">保洁</view>
+                        </view>
+                      </view>
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--publisher">
+                          <view is="components/avatar/index">
+                            <view class="avatar-index--container">
+                              <view class="avatar-index--avatar">
+                                <image class="avatar-index--avatar-image sk-image" style="width: 20px;height: 20px;border-radius: 50%"></image>
+                              </view>
+                              <view class="avatar-index--nickname sk-transparent sk-text-18-7500-82 sk-text" style="font-size: 11px">沁塵</view>
+                            </view>
+                          </view>
+                        </view>
+                        <view class="service-preview-index--score sk-transparent sk-text-18-7500-186 sk-text">★ 0</view>
+                      </view>
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--publish-date sk-transparent sk-text-18-7500-773 sk-text">2021-06-28 15:03:24</view>
+                      </view>
+                      <view class="service-preview-index--row service-preview-index--row-last">
+                        <view class="service-preview-index--price sk-transparent">
+                          <text class="service-preview-index--label sk-transparent sk-opacity">￥</text>111.00
+                        </view>
+                        <view class="service-preview-index--sales-volume sk-transparent sk-text-18-7500-135 sk-text">已售 0
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="service-preview" hidden="{{hideServiceLoading}}">
+                <view is="components/service-preview/index">
+                  <view class="service-preview-index--container">
+                    <view class="service-preview-index--left">
+                      <view class="service-preview-index--type-tag sk-transparent sk-text-18-7500-690 sk-text">
+                        在提供
+                      </view>
+                      <image class="service-preview-index--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="service-preview-index--right">
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--service-name sk-transparent sk-text-18-7500-222 sk-text">阿三大叔大叔大叔大</view>
+                        <view class="service-preview-index--category-tag">
+                          <view is="components/icon/index">
+                            <view class="icon-index--iconfont icon-index--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size:17px;color:#f27013;"></view>
+                          </view>
+                          <view class="service-preview-index--tag-text sk-transparent sk-text-18-7500-61 sk-text">保洁</view>
+                        </view>
+                      </view>
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--publisher">
+                          <view is="components/avatar/index">
+                            <view class="avatar-index--container">
+                              <view class="avatar-index--avatar">
+                                <image class="avatar-index--avatar-image sk-image" style="width: 20px;height: 20px;border-radius: 50%"></image>
+                              </view>
+                              <view class="avatar-index--nickname sk-transparent sk-text-18-7500-107 sk-text" style="font-size: 11px">沁塵</view>
+                            </view>
+                          </view>
+                        </view>
+                        <view class="service-preview-index--score sk-transparent sk-text-18-7500-986 sk-text">★ 0</view>
+                      </view>
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--publish-date sk-transparent sk-text-18-7500-141 sk-text">2021-06-27 21:07:59</view>
+                      </view>
+                      <view class="service-preview-index--row service-preview-index--row-last">
+                        <view class="service-preview-index--price sk-transparent">
+                          <text class="service-preview-index--label sk-transparent sk-opacity">￥</text>11111.00
+                        </view>
+                        <view class="service-preview-index--sales-volume sk-transparent sk-text-18-7500-403 sk-text">已售 0
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="service-preview" hidden="{{hideServiceLoading}}">
+                <view is="components/service-preview/index">
+                  <view class="service-preview-index--container">
+                    <view class="service-preview-index--left">
+                      <view class="service-preview-index--type-tag sk-transparent sk-text-18-7500-576 sk-text">
+                        在提供
+                      </view>
+                      <image class="service-preview-index--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="service-preview-index--right">
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--service-name sk-transparent sk-text-18-7500-644 sk-text">111111</view>
+                        <view class="service-preview-index--category-tag">
+                          <view is="components/icon/index">
+                            <view class="icon-index--iconfont icon-index--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size:17px;color:#f27013;"></view>
+                          </view>
+                          <view class="service-preview-index--tag-text sk-transparent sk-text-18-7500-655 sk-text">保洁</view>
+                        </view>
+                      </view>
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--publisher">
+                          <view is="components/avatar/index">
+                            <view class="avatar-index--container">
+                              <view class="avatar-index--avatar">
+                                <image class="avatar-index--avatar-image sk-image" style="width: 20px;height: 20px;border-radius: 50%"></image>
+                              </view>
+                              <view class="avatar-index--nickname sk-transparent sk-text-18-7500-153 sk-text" style="font-size: 11px">沁塵</view>
+                            </view>
+                          </view>
+                        </view>
+                        <view class="service-preview-index--score sk-transparent sk-text-18-7500-55 sk-text">★ 0</view>
+                      </view>
+                      <view class="service-preview-index--row">
+                        <view class="service-preview-index--publish-date sk-transparent sk-text-18-7500-740 sk-text">2021-06-27 19:11:42</view>
+                      </view>
+                      <view class="service-preview-index--row service-preview-index--row-last">
+                        <view class="service-preview-index--price sk-transparent">
+                          <text class="service-preview-index--label sk-transparent sk-opacity">￥</text>55.00
+                        </view>
+                        <view class="service-preview-index--sales-volume sk-transparent sk-text-18-7500-956 sk-text">已售 0
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view is="components/show-status/index"></view>
+            </view>
+            <view is="components/safe-area/index">
+              <view class="area-index--safe-area-bottom"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

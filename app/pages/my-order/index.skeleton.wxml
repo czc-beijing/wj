@@ -1,0 +1,203 @@
+<!--
+此文件为开发者工具生成，生成时间: 2021/7/22 上午10:22:08
+使用方法：
+在 /Users/qinchen/workspace/mini_program/c-homemaking/pages/my-order/index.wxml 引入模板
+
+```
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 /Users/qinchen/workspace/mini_program/c-homemaking/pages/my-order/index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <view is="components/tabs/index" hidden="{{hideTabsLoading}}">
+        <view class="tabs-index--container">
+          <view class="tabs-index--tabs">
+            <view class="tabs-index--tab-item">
+              <view class="tabs-index--tab-label sk-transparent sk-text-18-7500-291 sk-text" data-index="0">
+                全部订单
+              </view>
+            </view>
+            <view class="tabs-index--tab-item">
+              <view class="tabs-index--tab-label tabs-index--active-tab sk-transparent sk-text-18-7500-349 sk-text" data-index="1">
+                待同意
+              </view>
+              <view class="tabs-index--divider"></view>
+            </view>
+            <view class="tabs-index--tab-item">
+              <view class="tabs-index--tab-label sk-transparent sk-text-18-7500-687 sk-text" data-index="2">
+                待收款
+              </view>
+            </view>
+            <view class="tabs-index--tab-item">
+              <view class="tabs-index--tab-label sk-transparent sk-text-18-7500-525 sk-text" data-index="3">
+                待确认
+              </view>
+            </view>
+            <view class="tabs-index--tab-item">
+              <view class="tabs-index--tab-label sk-transparent sk-text-18-7500-131 sk-text" data-index="4">
+                待评价
+              </view>
+            </view>
+          </view>
+          <view class="tabs-index--tab-planel">
+            <view>
+              <view class="order-preview" hidden="{{hideOrderLoading}}">
+                <view is="components/order-preview/index">
+                  <view class="order-preview-index--container">
+                    <view class="order-preview-index--top">
+                      <view class="order-preview-index--user-info">
+                        <view class="order-preview-index--avatar">
+                          <image class="order-preview-index--avatar-image sk-image"></image>
+                        </view>
+                        <view class="order-preview-index--nickname sk-transparent sk-text-18-7500-545 sk-text">奋斗的大毛驴
+                        </view>
+                      </view>
+                      <view class="order-preview-index--order-status sk-transparent sk-text-18-7500-151 sk-text">
+                        待同意
+                      </view>
+                    </view>
+                    <view class="order-preview-index--center">
+                      <view class="order-preview-index--left">
+                        <image class="order-preview-index--cover-image sk-image"></image>
+                      </view>
+                      <view class="order-preview-index--right">
+                        <view class="order-preview-index--service-name sk-transparent sk-text-18-7500-811 sk-text">汽车维护保养套餐</view>
+                        <view class="order-preview-index--price">
+                          <text class="order-preview-index--price-label sk-transparent sk-opacity">￥</text>
+                          <text class="order-preview-index--price-value sk-transparent sk-text-18-7500-323 sk-text">2999.00</text>
+                        </view>
+                      </view>
+                    </view>
+                    <view>
+                      <view is="pages/my-order/components/publisher-action/index">
+                        <view class="publisher-action-index--container">
+                          <view class="publisher-action-index--chat">
+                            <view is="components/button/index">
+                              <label for="imooc">
+                                <view class="button-index--i-button-special sk-transparent" style="true">
+                                  <view is="components/icon/index" style="margin-right:5px">
+                                    <view class="icon-index--iconfont icon-index--icon-telephone sk-pseudo sk-pseudo-circle" style="font-size:17px;"></view>
+                                  </view>
+                                  联系对方
+                                </view>
+                              </label>
+                            </view>
+                          </view>
+                          <view>
+                            <view is="components/button/index">
+                              <label for="imooc">
+                                <view class="button-index--i-button button-index--shape-semicircle button-index--mini button-index--i-class sk-transparent sk-text-18-7500-894 sk-text" style="background-color:;">
+                                  去同意
+                                </view>
+                              </label>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="order-preview" hidden="{{hideOrderLoading}}">
+                <view is="components/order-preview/index">
+                  <view class="order-preview-index--container">
+                    <view class="order-preview-index--top">
+                      <view class="order-preview-index--user-info">
+                        <view class="order-preview-index--avatar">
+                          <image class="order-preview-index--avatar-image sk-image"></image>
+                        </view>
+                        <view class="order-preview-index--nickname sk-transparent sk-text-18-7500-459 sk-text">慕慕4266
+                        </view>
+                      </view>
+                      <view class="order-preview-index--order-status sk-transparent sk-text-18-7500-316 sk-text">
+                        待同意
+                      </view>
+                    </view>
+                    <view class="order-preview-index--center">
+                      <view class="order-preview-index--left">
+                        <image class="order-preview-index--cover-image sk-image"></image>
+                      </view>
+                      <view class="order-preview-index--right">
+                        <view class="order-preview-index--service-name sk-transparent sk-text-18-7500-641 sk-text">汽车维护保养套餐</view>
+                        <view class="order-preview-index--price">
+                          <text class="order-preview-index--price-label sk-transparent sk-opacity">￥</text>
+                          <text class="order-preview-index--price-value sk-transparent sk-text-18-7500-527 sk-text">2999.00</text>
+                        </view>
+                      </view>
+                    </view>
+                    <view>
+                      <view is="pages/my-order/components/publisher-action/index">
+                        <view class="publisher-action-index--container">
+                          <view class="publisher-action-index--chat">
+                            <view is="components/button/index">
+                              <label for="imooc">
+                                <view class="button-index--i-button-special sk-transparent" style="true">
+                                  <view is="components/icon/index" style="margin-right:5px">
+                                    <view class="icon-index--iconfont icon-index--icon-telephone sk-pseudo sk-pseudo-circle" style="font-size:17px;"></view>
+                                  </view>
+                                  联系对方
+                                </view>
+                              </label>
+                            </view>
+                          </view>
+                          <view>
+                            <view is="components/button/index">
+                              <label for="imooc">
+                                <view class="button-index--i-button button-index--shape-semicircle button-index--mini button-index--i-class sk-transparent sk-text-18-7500-524 sk-text" style="background-color:;">
+                                  去同意
+                                </view>
+                              </label>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="order-preview" hidden="{{hideOrderLoading}}">
+                <view is="components/order-preview/index">
+                  <view class="order-preview-index--container">
+                    <view class="order-preview-index--top">
+                      <view class="order-preview-index--user-info">
+                        <view class="order-preview-index--avatar">
+                          <image class="order-preview-index--avatar-image sk-image"></image>
+                        </view>
+                        <view class="order-preview-index--nickname sk-transparent sk-text-18-7500-617 sk-text">这几个
+                        </view>
+                      </view>
+                      <view class="order-preview-index--order-status sk-transparent sk-text-18-7500-215 sk-text">
+                        待同意
+                      </view>
+                    </view>
+                    <view class="order-preview-index--center">
+                      <view class="order-preview-index--left">
+                        <image class="order-preview-index--cover-image sk-image"></image>
+                      </view>
+                      <view class="order-preview-index--right">
+                        <view class="order-preview-index--service-name sk-transparent sk-text-18-7500-951 sk-text">宠物洗澡按摩，上门接送</view>
+                        <view class="order-preview-index--price">
+                          <text class="order-preview-index--price-label sk-transparent sk-opacity">￥</text>
+                          <text class="order-preview-index--price-value sk-transparent sk-text-18-7500-341 sk-text">80.00</text>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

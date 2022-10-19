@@ -1,0 +1,42 @@
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading.hideTabsLoading === loading.hideOrderLoading }}"
+          data="{{...loading}}"/>
+<wxs src="/common/wxs/order-status.wxs" module="statusConvert"></wxs>
+<view class="box">
+      <view class="cu-bar bg-white search">        
+      <view class="search-form radius">
+          <text class="cuIcon-search"></text>
+          <!--绑定监听搜索框信息-->
+          <input type="text" placeholder="搜索联系人" style="text-align: center; margin-top: 50rpx;" confirm-type="search" bindinput="searchInput"></input>
+         
+        </view>
+      </view>
+    </view>
+<view class="container">
+    <i-tabs tabs="{{tabs}}"
+            active="{{currentTabIndex}}"
+            bind:change="handleTabChange"
+            data-skeleton-hide="hideTabsLoading">
+        <view slot="plan">
+            <view class="order-preview" data-skeleton-hide="hideOrderLoading"
+                  wx:for="{{orderList}}" wx:key="index">
+                <i-order-preview role="{{role}}" order="{{item}}">
+                    <i-consumer-action wx:if="{{role === roleType.CONSUMER}}"
+                                       order="{{item}}"
+                                       bind:nav-detail="handleNavDetail"
+                                       bind:refund="handleRefund"
+                                       bind:chat="handleChat">
+                    </i-consumer-action>
+                    <i-publisher-action wx:if="{{role===roleType.PUBLISHER}}"
+                                        order="{{item}}"
+                                        bind:nav-detail="handleNavDetail"
+                                        bind:chat="handleChat">
+                    </i-publisher-action>
+                </i-order-preview>
+            </view>
+            <i-show-status show="{{!orderList.length}}" top="220" content="暂时还没有任何订单"></i-show-status>
+        </view>
+    </i-tabs>
+</view>
+
+

@@ -1,0 +1,9 @@
+{
+  "backgroundColorTop": "#f3d066",
+  "backgroundColorBottom": "#efefef",
+  "navigationBarBackgroundColor": "#f3d066",
+  "navigationBarTitleText": "个人中心",
+  "usingComponents": {
+    "i-badge": "/components/badge/index"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-service-link": "/pages/conversation/components/service-link/index"
+  }
+}

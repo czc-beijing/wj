@@ -1,0 +1,84 @@
+<!--
+此文件为开发者工具生成，生成时间: 2021/5/14 下午8:59:31
+使用方法：
+在 /Users/qinchen/workspace/mini_program/c-homemaking/pages/service-detail/index.wxml 引入模板
+
+```
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 /Users/qinchen/workspace/mini_program/c-homemaking/pages/service-detail/index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <view class="service-container">
+        <view class="service-info">
+          <view class="cover-image">
+            <image mode="widthFix" style="height: 221.62px;" class="sk-image"></image>
+          </view>
+          <view class="row">
+            <view class="service-title sk-transparent sk-text-18-7500-110 sk-text">北京路附近寻保姆一名</view>
+            <view class="category-tag">
+              <view class="triangle" style="border: none;"></view>
+              <view class="tag-text sk-transparent sk-text-18-7500-194 sk-text">
+                护理
+              </view>
+            </view>
+          </view>
+          <view class="row">
+            <view class="publisher">
+              <view class="publisher-avatar">
+                <image class="avatar sk-image"></image>
+              </view>
+              <view class="publisher-name sk-transparent sk-text-18-7500-532 sk-text">沁塵</view>
+            </view>
+            <view class="score sk-transparent sk-text-18-7500-966 sk-text">★ 0</view>
+          </view>
+          <view class="row">
+            <view class="publish-date sk-transparent sk-text-18-7500-760 sk-text">2021-04-29 20:01:00</view>
+          </view>
+          <view class="row row-space-between">
+            <view class="price sk-transparent">
+              <text class="label sk-transparent sk-opacity">￥</text>12000.00
+            </view>
+          </view>
+          <view class="row">
+            <view class="description sk-transparent sk-text-18-7500-690 sk-text">
+              家中有100岁男性老年人需要保姆一名。老人身体健康，就是行动不便，因个人工作原因未能时刻照看，想找一名保姆照顾老人日常起居饮食，12000元/月，包吃住，要求有相关资质或者丰富从业经验，愿意的请联系
+            </view>
+          </view>
+        </view>
+        <view class="service-status">
+          <view class="sk-transparent sk-text-18-7500-115 sk-text">服务状态</view>
+          <view class="sk-transparent sk-text-18-7500-938 sk-text">已发布</view>
+        </view>
+      </view>
+      <view class="action-bar" style="border: none;">
+        <view class="action-bar-item">
+          <view is="components/button/index" data-status="3">
+            <view class="button-index--i-button button-index--theme-bg-color button-index--theme-font-color button-index--shape-semicircle button-index--medium sk-transparent sk-text-18-7500-55 sk-text" style="max-width: 50px; background-color: rgb(255, 255, 255); border: none;">取消服务
+            </view>
+          </view>
+          <view is="components/button/index">
+            <view class="button-index--i-button button-index--theme-bg-color button-index--theme-font-color button-index--shape-semicircle button-index--medium sk-transparent sk-text-18-7500-90 sk-text" style="max-width: 50px; background-color: rgb(255, 255, 255); border: none;">修改服务
+            </view>
+          </view>
+          <view is="components/button/index" data-status="2">
+            <view class="button-index--i-button button-index--theme-bg-color button-index--theme-font-color button-index--shape-semicircle button-index--medium i-button sk-transparent sk-text-18-7500-753 sk-text" style="max-width:50px;background-color:;">暂停发布
+            </view>
+          </view>
+        </view>
+        <view is="components/safe-area/index">
+          <view class="area-index--safe-area-bottom"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

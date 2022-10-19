@@ -1,0 +1,7 @@
+{
+  "backgroundColorBottom": "#ffffff",
+  "navigationBarTitleText": "预订成功",
+  "usingComponents": {
+    "mp-msg": "weui-miniprogram/msg/msg"
+  }
+}

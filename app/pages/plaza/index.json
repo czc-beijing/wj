@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "军明挖机助手",
+  "navigationBarBackgroundColor": "#f3d066",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "i-service-preview": "/components/service-preview/index",
+    "i-skeleton": "/components/skeleton/index"
+  }
+}

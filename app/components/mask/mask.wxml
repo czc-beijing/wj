@@ -1,0 +1,1 @@
+<view class="container" style="background-color:{{bgColor}};opacity: {{opacity}}" wx:if="{{show}}"/>

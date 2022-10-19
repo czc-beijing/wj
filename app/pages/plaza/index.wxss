@@ -1,0 +1,45 @@
+@import "./index.skeleton.wxss";
+
+.container {
+    height: 100%;
+}
+
+.category-swiper {
+    box-sizing: border-box;
+    padding: 30rpx 0 30rpx 30rpx;
+    background-color: #ffffff;
+}
+
+.category-swiper-item {
+    border-radius: 20rpx;
+    width: 330rpx;
+    height: 150rpx;
+    background-image: linear-gradient(to right, #e68d44, #eb6d59) !important;
+}
+
+.category-swiper-item text {
+    position: absolute;
+    top: 20rpx;
+    left: 20rpx;
+    color: #fff;
+}
+
+.service-preview {
+    margin-bottom: 30rpx;
+}
+
+.temp{
+    width: 100%;
+    height: 136rpx;
+    box-sizing: border-box;
+}
+
+.remark {
+    background-color: #fff;
+}
+
+.remark-image{
+    display:flex;
+    height: 300rpx;
+    width: 100%;
+}
