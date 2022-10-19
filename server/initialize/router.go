@@ -30,7 +30,6 @@ func Router() {
 
 	{
 		app.GET("/v1/category", api.GetAppCategory().GetCategoryList)
-
 		// 用户登录
 		app.POST("/login", api.GetAppUser().UserLogin)
 		// 用户登录

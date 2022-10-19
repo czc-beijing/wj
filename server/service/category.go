@@ -9,7 +9,6 @@ import (
 type AppCategoryService struct {
 }
 
-// 获取服务类目列表
 func (g *AppCategoryService) GetList(param app.CategoryQueryParam) []app.Category {
 	var categoryList []app.Category
 	query := &app.Category{
