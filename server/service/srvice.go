@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 	"time"
@@ -137,6 +138,7 @@ func (s *AppServiceService) Create(c *gin.Context, param app.ServiceCreateParam)
 	sid, _ := c.Get("sid")
 	param.Sid = cast.ToUint64(sid)
 	openID, _ := c.Get("openId")
+	fmt.Println(openID)
 	param.OpenId = openID.(string)
 	designatedPlace := 0
 	if param.DesignatedPlace {
