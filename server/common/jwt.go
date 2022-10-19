@@ -2,7 +2,7 @@ package common
 
 import (
 	"github.com/golang-jwt/jwt"
-	"imall/global"
+	"wj/global"
 	"time"
 )
 

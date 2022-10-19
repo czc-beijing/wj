@@ -1,5 +1,8 @@
+<view >
+        <text>开始时间：{{order.begin_date}}</text>
+        <text>结束时间：{{order.end_date}}</text>
+</view>
 <view class="container">
-
     <view class="chat">
         <i-button bgColor="#fff" icon="telephone" data-tel="{{order.tel}}" bind:tap="handleChat">
             联系对方
@@ -22,3 +25,4 @@
         </i-button>
     </view>
 </view>
+

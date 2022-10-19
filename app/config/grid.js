@@ -25,7 +25,7 @@ const appointWithMeGrid = {
             badge: 'unpaid',
             cell: { role: roleType.PUBLISHER, status: 1 },
             icon: 'file-open',
-            text: '待收款'
+            text: '工作中'
         },
         {
             badge: 'unconfirmed',
@@ -67,7 +67,7 @@ const myAppointGrid = {
             badge: 'unpaid',
             cell: { role: roleType.CONSUMER, status: 1 },
             icon: 'file-open',
-            text: '待付款'
+            text: '工作中'
         },
         {
             badge: 'unconfirmed',

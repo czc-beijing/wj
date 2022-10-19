@@ -10,7 +10,7 @@ var Logger *zap.Logger
 
 func NewLog() {
 	hook := lumberjack.Logger{
-		Filename: "./logs/service.log",
+		Filename: "./logs/Service.log",
 		MaxSize:  1024,
 		MaxAge:   8,
 	}

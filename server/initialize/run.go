@@ -1,6 +1,6 @@
 package initialize
 
-import "imall/log"
+import "wj/log"
 
 func Run() {
 	log.NewLog() //初始化日志

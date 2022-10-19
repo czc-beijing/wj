@@ -1,5 +1,7 @@
 package app
 
+import "wj/models"
+
 // 数据库，订单数据映射模型
 type Order struct {
 	Id               uint64 `gorm:"id"`
@@ -34,43 +36,12 @@ type OrderUpdateParam struct {
 	Action int    `form:"action" binding:"required,gt=0"`
 }
 
-// 订单提交参数模型
-type OrderSubmitParam struct {
-	OpenId string `form:"openId" json:"openId" binding:"required"`
-	Sid    uint64 `form:"sid" json:"sid" binding:"required,gt=0"`
-}
-
 // 订单查询参数模型
 type OrderQueryParam struct {
 	Type     int    `form:"type" json:"type"`
 	OpenId   string `form:"openId" json:"openId"`
 	Sid      uint64 `form:"sid" binding:"required,gt=0"`
 	UserName uint64 `form:"user_name"`
-}
-
-// 订单列表传输模型
-type OrderList struct {
-	Id         uint64      `json:"id"`
-	Status     int         `json:"status"`
-	TotalPrice float64     `json:"totalPrice"`
-	GoodsCount uint        `json:"goodsCount"`
-	GoodsItem  []GoodsItem `json:"goodsItem"`
-	Created    string      `json:"created"`
-}
-
-// 订单服务项传输模型
-type GoodsItem struct {
-	Id       uint64  `json:"id"`
-	Title    string  `json:"title"`
-	Price    float64 `json:"price"`
-	ImageUrl string  `json:"imageUrl"`
-	Count    int     `json:"count"`
-}
-
-// 服务状态更新参数模型
-type GoodsStatusUpdateParam struct {
-	Id     uint64 `json:"id" from:"id"`
-	Action int    `json:"action" from:"action" binding:"required"`
 }
 
 type OrderCreateParam struct {
@@ -94,19 +65,19 @@ type OrderCreateParam struct {
 }
 
 type OrderInfo struct {
-	ID           uint64       `json:"id"`
-	OrderNo      string       `json:"order_no"`
-	Price        string       `json:"price"`
-	Role         int          `json:"role"`
-	ServiceSnap  ServicesInfo `json:"service_snap"`
-	AddressSnap  AddressInfo  `json:"address_snap"`
-	Status       int          `json:"status"`
-	CreateTime   string       `json:"create_time"`
-	PublisherTel string       `json:"publisher_tel"`
-	BeginDate    string       `json:"begin_date"`
-	EndDate      string       `json:"end_date"`
-	Tel          string       `json:"tel"`
-	Description  string       `json:"description"`
+	ID           uint64      `json:"id"`
+	OrderNo      string      `json:"order_no"`
+	Price        string      `json:"price"`
+	Role         int         `json:"role"`
+	ServiceSnap  ServiceInfo `json:"service_snap"`
+	AddressSnap  AddressInfo `json:"address_snap"`
+	Status       int         `json:"status"`
+	CreateTime   string      `json:"create_time"`
+	PublisherTel string      `json:"publisher_tel"`
+	BeginDate    string      `json:"begin_date"`
+	EndDate      string      `json:"end_date"`
+	Tel          string      `json:"tel"`
+	Description  string      `json:"description"`
 	Publisher    struct {
 		ID       uint64      `json:"id"`
 		Nickname string      `json:"nickname"`
@@ -133,9 +104,24 @@ type AddressInfo struct {
 	ProvinceName string `json:"provinceName"`
 }
 
-// 订单列表查询参数模型
 type OrderDetailParam struct {
 	Id     uint64 `form:"id"`
+	Sid    uint64 `form:"sid"`
+	OpenId string `form:"openId"`
+}
+
+type MyOrderQueryParam struct {
+	Page     models.AppPage
+	Role     int    `form:"role"`
+	Status   string `form:"status"`
+	Sid      uint64 `form:"sid"`
+	OpenId   string `form:"openId"`
+	UserName string `form:"address_user_name"`
+}
+
+type MyOrderTodayParam struct {
+	Page   models.AppPage
+	Role   int    `form:"role" `
 	Sid    uint64 `form:"sid"`
 	OpenId string `form:"openId"`
 }

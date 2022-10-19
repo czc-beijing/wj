@@ -4,7 +4,7 @@ import (
 	"errors"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
-	"imall/global"
+	"wj/global"
 	"time"
 )
 

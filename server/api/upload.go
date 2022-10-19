@@ -2,9 +2,9 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"imall/global"
-	"imall/models/app"
-	"imall/response"
+	"wj/global"
+	"wj/models/app"
+	"wj/response"
 )
 
 type WebFileUpload struct {

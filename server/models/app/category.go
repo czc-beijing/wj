@@ -7,6 +7,7 @@ type Category struct {
 	ParentId uint64 `gorm:"parent_id"`  // 父级编号
 	Level    uint   `gorm:"level"`      // 类目级别
 	Sort     uint   `gorm:"sort"`       // 类目排序
+	Status   int    `gorm:"status"`     // 类目排序
 	Created  string `gorm:"created"`    // 创建时间
 	Updated  string `gorm:"updated"`    // 更新时间
 	Sid      uint64 `gorm:"sid"`        // 店铺编号
@@ -15,10 +16,4 @@ type Category struct {
 // 类目选项查询参数模型
 type CategoryQueryParam struct {
 	Sid uint64 `form:"sid" binding:"required,gt=0"`
-}
-
-// 服务类目选项传输模型
-type CategoryOption struct {
-	Id   uint64 `json:"id"`
-	Text string `json:"text"`
 }

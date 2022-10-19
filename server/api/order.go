@@ -3,36 +3,18 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
-	"imall/constant"
-	"imall/models/app"
-	"imall/response"
-	"imall/service"
+	"wj/constant"
+	"wj/models/app"
+	"wj/response"
+	"wj/service"
 )
-
-type WebOrder struct {
-	service.WebOrderService
-}
 
 type AppOrder struct {
 	service.AppOrderService
 }
 
-func GetWebOrder() *WebOrder {
-	return &WebOrder{}
-}
-
 func GetAppOrder() *AppOrder {
 	return &AppOrder{}
-}
-
-func (o *AppOrder) GetOrderList(context *gin.Context) {
-	var param app.OrderQueryParam
-	if err := context.ShouldBind(&param); err != nil {
-		response.Failed(constant.ParamInvalid, context)
-		return
-	}
-	orderList := o.GetList(param)
-	response.Success("查询成功", orderList, context)
 }
 
 func (o *AppOrder) CreateOrder(context *gin.Context) {
@@ -54,7 +36,7 @@ func (o *AppOrder) CreateOrder(context *gin.Context) {
 	res := gin.H{
 		"service_id": 0,
 	}
-	if insertId := service.NewAppOrderService().Create(context, param); insertId > 0 {
+	if insertId := o.Create(context, param); insertId > 0 {
 		res["service_id"] = insertId
 		response.Success(constant.Created, res, context)
 		return
@@ -95,4 +77,28 @@ func (o *AppOrder) GetOrderDetail(c *gin.Context) {
 	param.OpenId = openID.(string)
 	productDetail := o.GetDetail(param)
 	response.Success("查询成功", productDetail, c)
+}
+
+func (o *AppOrder) GetUserOrderList(c *gin.Context) {
+	var param app.MyOrderQueryParam
+	if err := c.ShouldBind(&param); err != nil {
+		response.Failed(constant.ParamInvalid, c)
+		return
+	}
+	if param.Page.PageNum == 0 {
+		param.Page.PageSize = 0
+		param.Page.PageNum = 4
+	}
+	orderList, rows := o.GetListByOpenId(c, param)
+	response.SuccessAppPage(constant.Selected, orderList, rows, param.Page.PageNum, param.Page.PageSize, c)
+}
+
+func (o *AppOrder) GetUserOrderTodayDate(c *gin.Context) {
+	var param app.MyOrderTodayParam
+	if err := c.ShouldBind(&param); err != nil {
+		response.Failed(constant.ParamInvalid, c)
+		return
+	}
+	data := o.TodayData(c, param)
+	response.Success(constant.LoginSuccess, data, c)
 }

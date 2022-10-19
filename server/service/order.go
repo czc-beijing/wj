@@ -4,108 +4,19 @@ import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
-	"imall/common"
-	"imall/constant"
-	"imall/global"
-	"imall/models/app"
-	"imall/models/web"
-	"imall/utils"
 	"time"
+	"wj/common"
+	"wj/constant"
+	"wj/global"
+	"wj/models/app"
+	"wj/utils"
 )
-
-type WebOrderService struct {
-}
 
 type AppOrderService struct {
 }
 
 func NewAppOrderService() *AppOrderService {
 	return &AppOrderService{}
-}
-
-// 删除订单
-func (o *WebOrderService) Delete(param web.OrderDeleteParam) int64 {
-	return global.Db.Delete(&web.Order{}, param.Id).RowsAffected
-}
-
-// 更新订单
-func (o *WebOrderService) Update(param web.OrderUpdateParam) int64 {
-	order := web.Order{
-		Id:      param.Id,
-		Status:  param.Status,
-		Updated: common.NowTime(),
-	}
-	return global.Db.Model(&order).Updates(order).RowsAffected
-}
-
-// 获取订单列表
-func (o *WebOrderService) GetList(param web.OrderListParam) ([]web.OrderList, int64) {
-	return nil, 0
-}
-
-// 更新订单
-func (o *AppOrderService) UpdateStatus(param app.OrderUpdateParam) uint64 {
-	updateStatus := constant.ActionStatus[param.Action]
-	order := web.Order{
-		Id:      param.Id,
-		Status:  updateStatus,
-		Updated: common.NowTime(),
-	}
-	_ = global.Db.Model(&order).Where(map[string]interface{}{"id": param.Id}).Updates(&order).RowsAffected
-	return order.Id
-}
-
-// 获取订单列表
-func (o *AppOrderService) GetList(param app.OrderQueryParam) []app.OrderList {
-	//// 根据订单状态查询订单
-	//orders := make([]app.Order, 0)
-	//if param.Type == 1 {
-	//	global.Db.Table("order").Where("status != ? and sid = ?", 5, param.Sid).Find(&orders)
-	//} else {
-	//	global.Db.Table("order").Where("status = ? and sid = ?", 5, param.Sid).Find(&orders)
-	//}
-	//
-	//// 组装订单列表
-	//orderList := make([]app.OrderList, 0)
-	//for _, o := range orders {
-	//	var order app.OrderList
-	//	goods := make([]app.Goods, 0)
-	//	order.Id = o.Id
-	//	order.Status = o.Status
-	//	order.TotalPrice = o.TotalPrice
-	//	order.Created = o.Created
-	//	// 查询服务信息
-	//	goodsIds := make([]uint, 0)
-	//	goodsIdsCount := map[int64]int{}
-	//	for _, gidCount := range strings.Split(o.GoodsIdsCount, ",") {
-	//		ic := strings.Split(gidCount, ":")
-	//		if len(ic) < 2 {
-	//			continue
-	//		}
-	//		id, _ := strconv.Atoi(ic[0])
-	//		count, _ := strconv.Atoi(ic[1])
-	//		goodsIdsCount[int64(id)] = count
-	//		goodsIds = append(goodsIds, uint(id))
-	//	}
-	//	global.Db.Table("goods").Find(&goods, goodsIds)
-	//
-	//	// 组装服务项
-	//	goodsItem := make([]app.GoodsItem, 0)
-	//	for _, g := range goods {
-	//		gItem := app.GoodsItem{
-	//			Id:       g.Id,
-	//			Title:    g.Title,
-	//			Price:    g.Price,
-	//			ImageUrl: g.ImageUrl,
-	//			Count:    goodsIdsCount[int64(g.Id)],
-	//		}
-	//		order.GoodsCount = order.GoodsCount + uint(gItem.Count)
-	//		goodsItem = append(goodsItem, gItem)
-	//	}
-	//	order.GoodsItem = goodsItem
-	//	orderList = append(orderList, order)
-	//}
-	return nil
 }
 
 // 创建服务
@@ -115,18 +26,18 @@ func (o *AppOrderService) Create(c *gin.Context, param app.OrderCreateParam) uin
 	consumerOpenId, _ := c.Get("openId")
 	sid, _ := c.Get("sid")
 	//查询发布者信息
-	var servicesInfo app.Services
-	global.Db.Table("services").Where(map[string]interface{}{"id": param.ServiceID}).First(&servicesInfo)
-	if servicesInfo.Id <= 0 {
+	var ServiceInfo app.Service
+	global.Db.Table("Service").Where(map[string]interface{}{"id": param.ServiceID}).First(&ServiceInfo)
+	if ServiceInfo.Id <= 0 {
 		return 0
 	}
-	servicesData := NewAppServicesService().GetInfo(servicesInfo.Id)
-	serviceSnap, _ := json.Marshal(servicesData)
-	orderNo := utils.GenerateOrderSn(servicesInfo.Id)
+	ServiceData := NewAppServiceService().GetInfo(ServiceInfo.Id)
+	serviceSnap, _ := json.Marshal(ServiceData)
+	orderNo := utils.GenerateOrderSn(ServiceInfo.Id)
 
 	order := app.Order{
 		OrderNo:          orderNo,
-		PublisherOpenId:  servicesInfo.OpenId,
+		PublisherOpenId:  ServiceInfo.OpenId,
 		ConsumerOpenId:   consumerOpenId.(string),
 		ServiceID:        param.ServiceID,
 		NationalCodeFull: param.Address.NationalCodeFull,
@@ -153,7 +64,12 @@ func (o *AppOrderService) Create(c *gin.Context, param app.OrderCreateParam) uin
 	return order.Id
 }
 
-func (o *AppOrderService) GetListByOpenId(param app.UserOrderQueryParam) ([]app.OrderInfo, int64) {
+func (o *AppOrderService) GetListByOpenId(c *gin.Context, param app.MyOrderQueryParam) ([]app.OrderInfo, int64) {
+	sid, _ := c.Get("sid")
+	param.Sid = cast.ToUint64(sid)
+	openID, _ := c.Get("openId")
+	param.OpenId = openID.(string)
+
 	var orderList []app.OrderInfo
 	var orders []app.Order
 	query := map[string]interface{}{"sid": param.Sid}
@@ -174,7 +90,7 @@ func (o *AppOrderService) GetListByOpenId(param app.UserOrderQueryParam) ([]app.
 			listDao.Where("user_name LIKE ?", "%"+param.UserName+"%")
 			rowDao.Where("user_name LIKE ?", "%"+param.UserName+"%")
 		}
-		rows = rowDao.Find(&[]app.Services{}).RowsAffected
+		rows = rowDao.Find(&[]app.Service{}).RowsAffected
 		listDao.Find(&orders)
 	}
 	if len(orders) <= 0 {
@@ -192,13 +108,13 @@ func (o *AppOrderService) GetListByOpenId(param app.UserOrderQueryParam) ([]app.
 		userMap[item.OpenId] = item
 	}
 	for _, item := range orders {
-		var servicesInfo app.ServicesInfo
-		_ = json.Unmarshal([]byte(item.ServiceSnap), &servicesInfo)
+		var ServiceInfo app.ServiceInfo
+		_ = json.Unmarshal([]byte(item.ServiceSnap), &ServiceInfo)
 		orderInfo := app.OrderInfo{
 			ID:          item.Id,
 			OrderNo:     item.OrderNo,
-			Price:       servicesInfo.Price,
-			ServiceSnap: servicesInfo,
+			Price:       ServiceInfo.Price,
+			ServiceSnap: ServiceInfo,
 			AddressSnap: app.AddressInfo{
 				CityName:     item.CityName,
 				UserName:     item.UserName,
@@ -254,13 +170,13 @@ func (o *AppOrderService) GetDetail(param app.OrderDetailParam) app.OrderInfo {
 	for _, item := range userList {
 		userMap[item.OpenId] = item
 	}
-	var servicesInfo app.ServicesInfo
-	_ = json.Unmarshal([]byte(orderData.ServiceSnap), &servicesInfo)
+	var ServiceInfo app.ServiceInfo
+	_ = json.Unmarshal([]byte(orderData.ServiceSnap), &ServiceInfo)
 	orderInfo := app.OrderInfo{
 		ID:          orderData.Id,
 		OrderNo:     orderData.OrderNo,
-		Price:       servicesInfo.Price,
-		ServiceSnap: servicesInfo,
+		Price:       ServiceInfo.Price,
+		ServiceSnap: ServiceInfo,
 		AddressSnap: app.AddressInfo{
 			CityName:     orderData.CityName,
 			UserName:     orderData.UserName,
@@ -296,7 +212,12 @@ func (o *AppOrderService) GetDetail(param app.OrderDetailParam) app.OrderInfo {
 }
 
 // 统计当日数据
-func (o *AppOrderService) TodayData(param app.UserOrderTodayParam) app.OrderTodayDate {
+func (o *AppOrderService) TodayData(c *gin.Context, param app.MyOrderTodayParam) app.OrderTodayDate {
+	sid, _ := c.Get("sid")
+	openID, _ := c.Get("openId")
+	param.Sid = cast.ToUint64(sid)
+	param.OpenId = openID.(string)
+
 	pps := "consumer_open_id = ? and sid = ? and status = 0"
 	pds := "consumer_open_id = ? and sid = ? and status = 1"
 	prs := "consumer_open_id = ? and sid = ? and status = 2"
@@ -313,4 +234,16 @@ func (o *AppOrderService) TodayData(param app.UserOrderTodayParam) app.OrderToda
 	global.Db.Table("order").Where(prs, param.OpenId, param.Sid).Count(&orderDate.Unconfirmed)
 	global.Db.Table("order").Where(ras, param.OpenId, param.Sid).Count(&orderDate.Unrated)
 	return orderDate
+}
+
+// 更新订单
+func (o *AppOrderService) UpdateStatus(param app.OrderUpdateParam) uint64 {
+	updateStatus := constant.ActionStatus[param.Action]
+	order := app.Order{
+		Id:      param.Id,
+		Status:  updateStatus,
+		Updated: common.NowTime(),
+	}
+	_ = global.Db.Model(&order).Where(map[string]interface{}{"id": param.Id}).Updates(&order).RowsAffected
+	return order.Id
 }

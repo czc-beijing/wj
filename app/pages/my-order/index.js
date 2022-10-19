@@ -10,7 +10,7 @@ Page({
             hideTabsLoading: false,
             hideOrderLoading: false,
         },
-        tabs: ['全部订单', '待同意', '待收款', '待确认', '待评价', '已完成'],
+        tabs: ['全部订单', '待同意', '工作中', '待确认', '待评价', '已完成'],
         currentTabIndex: 0,
         orderList: [],
         orderStatus,

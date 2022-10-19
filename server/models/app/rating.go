@@ -1,8 +1,7 @@
 package app
 
-import "imall/models"
+import "wj/models"
 
-// 服务类目映射模型
 type Rating struct {
 	Id           uint64 `gorm:"primaryKey"`   // 类目编号
 	OpenId       string `gorm:"open_id"`      // 类目编号
@@ -16,7 +15,6 @@ type Rating struct {
 	Sid          uint64 `gorm:"sid"`          // 店铺编号
 }
 
-// 评论列表参数模型
 type RatingQueryParam struct {
 	Page    models.AppPage
 	OrderId uint64 `form:"order_id"`
@@ -24,17 +22,11 @@ type RatingQueryParam struct {
 	OpenId  string `form:"openId"`
 }
 
-// 评论列表参数模型
 type RatingListParam struct {
 	Page      models.AppPage
 	ServiceId uint64 `form:"service_id"`
 	Sid       uint64 `form:"sid"`
 	OpenId    string `form:"openId"`
-}
-
-// 评论搜索参数模型
-type RatingSearchParam struct {
-	KeyWord string `form:"keyWord" binding:"required"`
 }
 
 // 评论列表传输模型

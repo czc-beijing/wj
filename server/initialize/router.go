@@ -2,10 +2,10 @@ package initialize
 
 import (
 	"fmt"
-	"imall/api"
-	"imall/global"
-	"imall/middleware"
 	"net/http"
+	"wj/api"
+	"wj/global"
+	"wj/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -29,43 +29,45 @@ func Router() {
 	app := engine.Group("/homemaking")
 
 	{
-		//订单服务更新状态
-		app.POST("v1/order/:id", api.GetAppOrder().UpdateOrderStatus)
-		// 文件上传
-		app.POST("/v1/file", api.GetWebFileUpload().FileUploadApp)
-		// 开启JWT认证,以下接口需要认证成功才能访问
-		app.GET("/v1/category", api.GetWebCategory().GetCategoryList)
+		app.GET("/v1/category", api.GetAppCategory().GetCategoryList)
+
 		// 用户登录
 		app.POST("/login", api.GetAppUser().UserLogin)
 		// 用户登录
 		app.GET("v1/token", api.GetAppUser().UserLogin)
 
+		// 文件上传
+		app.POST("/v1/file", api.GetWebFileUpload().FileUploadApp)
+
 		// 服务
-		app.POST("/v1/service", api.GetAppServices().CreateServices)
-		app.GET("/v1/service/list", api.GetAppServices().GetServicesList)
-		app.GET("/v1/service/:id", api.GetAppServices().GetServicesInfo)
-		app.POST("/v1/service/:id", api.GetAppServices().UpdateServicesStatus)
-		app.PUT("/v1/service/:id", api.GetAppServices().UpdateServices)
-		//评论
-		app.GET("/v1/rating/service", api.GetAppRating().GetRatingList)
+		app.POST("/v1/service", api.GetAppService().CreateService)
+		app.GET("/v1/service/list", api.GetAppService().GetServiceList)
+		app.GET("/v1/service/:id", api.GetAppService().GetServiceInfo)
+		app.POST("/v1/service/:id", api.GetAppService().UpdateServiceStatus)
+		app.PUT("/v1/service/:id", api.GetAppService().UpdateService)
 
 		app.Use(middleware.JWTAuth())
+
 		//评论
 		app.POST("/v1/rating", api.GetAppRating().CreateRating)
 		app.GET("/v1/rating/order", api.GetAppRating().GetRatingInfo)
+		app.GET("/v1/rating/service", api.GetAppRating().GetRatingList)
 
 		// 用户登录
 		app.POST("v1/user", api.GetAppUser().UserInfo)
 		app.POST("v1/token/verify", api.GetAppUser().Verify)
 
 		//我的预约服务
-		app.GET("/v1/service/my", api.GetAppUser().GetUserServicesList)
-		app.GET("/v1/service/count", api.GetAppUser().GetUserServicesTodayDate)
+		app.GET("/v1/service/my", api.GetAppService().MyServiceList)
+		app.GET("/v1/service/count", api.GetAppService().MyServiceTodayDate)
+
 		//我的订单
+		//订单服务更新状态
+		app.POST("v1/order/:id", api.GetAppOrder().UpdateOrderStatus)
 		app.POST("v1/order", api.GetAppOrder().CreateOrder)
-		app.GET("/v1/order/my", api.GetAppUser().GetUserOrderList)
+		app.GET("/v1/order/my", api.GetAppOrder().GetUserOrderList)
 		app.GET("/v1/order/:id", api.GetAppOrder().GetOrderDetail)
-		app.GET("/v1/order/count", api.GetAppUser().GetUserOrderTodayDate)
+		app.GET("/v1/order/count", api.GetAppOrder().GetUserOrderTodayDate)
 
 	}
 	// 启动、监听端口

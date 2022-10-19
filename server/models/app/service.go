@@ -1,9 +1,9 @@
 package app
 
-import "imall/models"
+import "wj/models"
 
 // 服务映射模型
-type Services struct {
+type Service struct {
 	Id              uint64 `gorm:"id"`               // 服务编号
 	OpenId          string `gorm:"open_id"`          // openId 发布者
 	CategoryId      uint64 `gorm:"category_id"`      // 类目编号
@@ -24,21 +24,14 @@ type Services struct {
 	UpdateTime      string `gorm:"update_time"`      // 更新时间
 }
 
-// 服务详情参数模型
-type ServicesInfoParam struct {
-	Id uint64 `form:"id" binding:"required"`
-}
-
-// 服务列表参数模型
-type ServicesQueryParam struct {
+type ServiceQueryParam struct {
 	Page       models.AppPage
 	CategoryId uint64 `form:"category_id"`
 	Type       uint64 `form:"type" `
 	Sid        uint64 `form:"sid"`
 }
 
-// 服务列表传输模型
-type ServicesInfo struct {
+type ServiceInfo struct {
 	ID              uint64 `json:"id"`
 	Type            int    `json:"type"`
 	DesignatedPlace bool   `json:"designated_place"`
@@ -68,8 +61,7 @@ type ServicesInfo struct {
 	} `json:"cover_image"`
 }
 
-// 服务创建参数模型
-type ServicesCreateParam struct {
+type ServiceCreateParam struct {
 	Type            int    `from:"type" json:"type"`
 	Title           string `from:"title" json:"title"`
 	OpenId          string `from:"open_id" json:"open_id"`
@@ -83,14 +75,12 @@ type ServicesCreateParam struct {
 	Sid             uint64 `from:"sid" json:"sid"`
 }
 
-// 服务状态更新参数模型
-type ServicesStatusUpdateParam struct {
+type ServiceStatusUpdateParam struct {
 	Id     uint64 `json:"id" from:"id"`
 	Action int    `json:"action" from:"action" binding:"required"`
 }
 
-// 服务更新参数模型
-type ServicesUpdateParam struct {
+type ServiceUpdateParam struct {
 	Id                    uint64     `from:"id" json:"id"`
 	Type                  int        `from:"type" json:"type"`
 	Title                 string     `from:"title" json:"title"`

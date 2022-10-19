@@ -1,7 +1,7 @@
 package initialize
 
 import (
-	"imall/global"
+	"wj/global"
 	"time"
 )
 
@@ -16,8 +16,8 @@ func Cron() {
 	defer ticker.Stop()
 
 	//for range ticker.C {
-	//	var c service.AppCartService
-	//	var o service.AppOrderService
+	//	var c Service.AppCartService
+	//	var o Service.AppOrderService
 	//	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	//	openId := "oUT385ZLmRr6R_a9xKSfSW9SekYI"
 	//

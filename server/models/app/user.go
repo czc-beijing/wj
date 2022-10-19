@@ -1,6 +1,6 @@
 package app
 
-import "imall/models"
+import "wj/models"
 
 // 用户数据映射模型
 type User struct {
@@ -51,20 +51,12 @@ type UserInfoParam struct {
 	Sid      int64  `form:"sid"`
 }
 
-// 服务列表参数模型
-type UserServicesQueryParam struct {
+type UserServiceQueryParam struct {
 	Page       models.AppPage
 	CategoryId uint64 `form:"category_id"`
 	Type       int    `form:"type" `
 	Sid        uint64 `form:"sid"`
 	OpenId     string `form:"openId"`
-}
-
-// 服务列表参数模型
-type UserServicesTodayDateQueryParam struct {
-	Type   int    `form:"type" `
-	Sid    uint64 `form:"sid"`
-	OpenId string `form:"openId"`
 }
 
 // 统计当日数据传输模型
@@ -75,28 +67,9 @@ type TodayDate struct {
 	OffShelves  int64 `json:"off_shelves"` // 已下架服务
 }
 
-// 服务列表参数模型
-type UserOrderQueryParam struct {
-	Page     models.AppPage
-	Role     int    `form:"role"`
-	Status   string `form:"status"`
-	Sid      uint64 `form:"sid"`
-	OpenId   string `form:"openId"`
-	UserName string `form:"address_user_name"`
-}
-
-// 统计当日数据传输模型
 type OrderTodayDate struct {
 	Unapproved  int64 `json:"unapproved"`  // 待同意
 	Unpaid      int64 `json:"unpaid"`      // 待支付
 	Unconfirmed int64 `json:"unconfirmed"` // 待确认
 	Unrated     int64 `json:"unrated"`     // 待评价
-}
-
-// 服务列表参数模型
-type UserOrderTodayParam struct {
-	Page   models.AppPage
-	Role   int    `form:"role" `
-	Sid    uint64 `form:"sid"`
-	OpenId string `form:"openId"`
 }

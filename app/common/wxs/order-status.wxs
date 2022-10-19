@@ -5,7 +5,7 @@ var convert = function (status) {
             statusText = '待同意'
             break;
         case 1:
-            statusText = '待收款'
+            statusText = '工作中'
             break;
         case 2:
             statusText = '待确认'

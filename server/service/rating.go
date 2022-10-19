@@ -2,10 +2,11 @@ package service
 
 import (
 	"encoding/json"
+	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
-	"imall/common"
-	"imall/global"
-	"imall/models/app"
+	"wj/common"
+	"wj/global"
+	"wj/models/app"
 )
 
 type WebRatingService struct {
@@ -19,13 +20,15 @@ func NewAppRatingService() *AppRatingService {
 }
 
 // 获取服务列表
-func (r *AppRatingService) GetList(param app.RatingListParam) ([]app.RatingInfo, int64) {
+func (r *AppRatingService) GetList(c *gin.Context, param app.RatingListParam) ([]app.RatingInfo, int64) {
+	sid, _ := c.Get("sid")
+	param.Sid = cast.ToUint64(sid)
 	var ratingData []*app.Rating
 	query := map[string]interface{}{"sid": param.Sid, "service_id": param.ServiceId}
 	rows := common.NewRestPage(param.Page, "rating", &app.Rating{
 		ServiceId: param.ServiceId,
 		Sid:       param.Sid,
-	}, &ratingData, &[]app.Services{})
+	}, &ratingData, &[]app.Service{})
 	if rows <= 0 {
 		return []app.RatingInfo{}, 0
 	}
@@ -61,7 +64,12 @@ func (r *AppRatingService) GetList(param app.RatingListParam) ([]app.RatingInfo,
 	return ratingList, rows
 }
 
-func (r *AppRatingService) CreateRating(param app.RatingCreateParam) app.Rating {
+func (r *AppRatingService) Create(c *gin.Context, param app.RatingCreateParam) app.Rating {
+	sid, _ := c.Get("sid")
+	param.Sid = cast.ToUint64(sid)
+	openID, _ := c.Get("openId")
+	param.OpenId = openID.(string)
+
 	var orderInfo app.Order
 	_ = global.Db.Table("order").Where(map[string]interface{}{"id": param.OrderId}).First(&orderInfo).RowsAffected
 	Illustration, _ := json.Marshal(param.Illustration)
@@ -79,7 +87,12 @@ func (r *AppRatingService) CreateRating(param app.RatingCreateParam) app.Rating 
 }
 
 // 获取服务列表
-func (r *AppRatingService) GetRatingInfo(param app.RatingQueryParam) app.RatingInfo {
+func (r *AppRatingService) GetRating(c *gin.Context, param app.RatingQueryParam) app.RatingInfo {
+	sid, _ := c.Get("sid")
+	param.Sid = cast.ToUint64(sid)
+	openID, _ := c.Get("openId")
+	param.OpenId = openID.(string)
+
 	var ratingData *app.Rating
 	query := map[string]interface{}{"open_id": param.OpenId, "sid": param.Sid, "order_id": param.OrderId}
 	_ = global.Db.Table("rating").Where(query).First(&ratingData).RowsAffected

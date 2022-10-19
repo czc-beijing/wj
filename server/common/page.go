@@ -1,8 +1,8 @@
 package common
 
 import (
-	"imall/global"
-	"imall/models"
+	"wj/global"
+	"wj/models"
 )
 
 // RestPage 分页查询
