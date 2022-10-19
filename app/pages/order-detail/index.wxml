@@ -17,10 +17,12 @@
         <i-order-preview hideTop order="{{order}}"/>
     </view>
     <view class="chat">
+    
         <i-detail-chat
                 userInfo="{{order[role===RoleType.PUBLISHER?'consumer':'publisher']}}"
                 bind:chat="handleToChat">
         </i-detail-chat>
+   
     </view>
     <view class="order-info">
         <i-order-info order="{{order}}"></i-order-info>

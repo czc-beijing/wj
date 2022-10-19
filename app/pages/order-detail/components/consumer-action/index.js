@@ -17,5 +17,12 @@ Component({
         handleRating() {
             this.triggerEvent('rating')
         },
+
+        handleUpdateOrder() {
+          const newData = JSON.stringify(this.data.order);
+          wx.navigateTo({
+              url: `/pages/order-management/index?order=` + encodeURIComponent(newData)
+          })
+      },
     }
 });
