@@ -3,13 +3,13 @@ package service
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
+	"time"
 	"wj/common"
 	"wj/constant"
 	"wj/global"
 	"wj/models"
 	"wj/models/app"
 	"wj/utils"
-	"time"
 )
 
 type WebServiceService struct {
@@ -136,6 +136,8 @@ func (s *AppServiceService) GetInfo(id uint64) *app.ServiceInfo {
 func (s *AppServiceService) Create(c *gin.Context, param app.ServiceCreateParam) uint64 {
 	sid, _ := c.Get("sid")
 	param.Sid = cast.ToUint64(sid)
+	openID, _ := c.Get("openId")
+	param.OpenId = openID.(string)
 	designatedPlace := 0
 	if param.DesignatedPlace {
 		designatedPlace = 1

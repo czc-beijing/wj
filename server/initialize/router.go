@@ -34,19 +34,16 @@ func Router() {
 		app.POST("/login", api.GetAppUser().UserLogin)
 		// 用户登录
 		app.GET("v1/token", api.GetAppUser().UserLogin)
-
 		// 文件上传
 		app.POST("/v1/file", api.GetWebFileUpload().FileUploadApp)
-
-		// 服务
-		app.POST("/v1/service", api.GetAppService().CreateService)
 		app.GET("/v1/service/list", api.GetAppService().GetServiceList)
 		app.GET("/v1/service/:id", api.GetAppService().GetServiceInfo)
+
+		// 服务
+		app.Use(middleware.JWTAuth())
+		app.POST("/v1/service", api.GetAppService().CreateService)
 		app.POST("/v1/service/:id", api.GetAppService().UpdateServiceStatus)
 		app.PUT("/v1/service/:id", api.GetAppService().UpdateService)
-
-		app.Use(middleware.JWTAuth())
-
 		//评论
 		app.POST("/v1/rating", api.GetAppRating().CreateRating)
 		app.GET("/v1/rating/order", api.GetAppRating().GetRatingInfo)

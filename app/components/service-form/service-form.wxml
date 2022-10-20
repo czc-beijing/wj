@@ -54,7 +54,6 @@
             <mp-cell show-error prop="price" title="价格">
                 <input bindinput="bindInputChange"
                        data-field="price"
-                       type="number"
                        value="{{formData.price}}"
                        placeholder="服务价格，不少于 1"/>
             </mp-cell>
