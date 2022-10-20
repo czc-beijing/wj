@@ -19,8 +19,7 @@ const (
 
 	StatusUnauthorized = "token令牌无效或已过期"
 
-	LoginFailed = "登录失败"
-
+	LoginFailed       = "登录失败"
 	SaveSuccess       = "保存成功"
 	SaveFailed        = "保存失败"
 	ParamInvalidAdder = "地址信息必填"

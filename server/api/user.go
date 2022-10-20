@@ -23,6 +23,11 @@ func (u *AppUser) UserLogin(context *gin.Context) {
 		response.Failed(constant.ParamInvalid, context)
 		return
 	}
+	sid, exists := context.Get("sid")
+	if !exists || sid == 0 {
+		response.Failed(constant.ParamInvalid, context)
+		return
+	}
 	userInfo, err := u.Login(context)
 	if userInfo == nil || err != nil {
 		response.AppFailed(http.StatusUnauthorized, 401, constant.StatusUnauthorized, context)
@@ -42,6 +47,11 @@ func (u *AppUser) UserInfo(c *gin.Context) {
 	}
 	_, exists := c.Get("openId")
 	if !exists {
+		response.Failed(constant.ParamInvalid, c)
+		return
+	}
+	sid, exists := c.Get("sid")
+	if !exists || sid == 0 {
 		response.Failed(constant.ParamInvalid, c)
 		return
 	}
