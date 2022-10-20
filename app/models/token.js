@@ -14,7 +14,11 @@ class Token {
         const res = await wxToPromise('request', {
             url: `${APIConfig.baseUrl}/${this.tokenUrl}`,
             data: {
-                code: sendcode
+                code: sendcode,
+                sid : 100001
+            },
+            header: {
+                'sid': 100001,
             },
             method: 'GET'
         })
