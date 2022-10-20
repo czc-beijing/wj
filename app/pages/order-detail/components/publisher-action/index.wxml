@@ -1,6 +1,6 @@
 <view class="paid" wx:if="{{order.status === orderStatus.UNPAID}}"
 bind:tap="handlePay">
-    <i-button size="long" shape="circle">确认收款</i-button>
+    <i-button size="long" shape="circle">结束工作</i-button>
 </view>
 <view class="approval" wx:if="{{order.status ===orderStatus.UNAPPROVED}}">
     <view>

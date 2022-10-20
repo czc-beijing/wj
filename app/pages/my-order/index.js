@@ -10,7 +10,7 @@ Page({
             hideTabsLoading: false,
             hideOrderLoading: false,
         },
-        tabs: ['全部订单', '待同意', '工作中', '待确认', '待评价', '已完成'],
+        tabs: ['全部订单', '待同意', '工作中', '工作完成', '待评价', '已完成'],
         currentTabIndex: 0,
         orderList: [],
         orderStatus,
@@ -18,8 +18,8 @@ Page({
         role: null,
     },
     onLoad: async function (options) {
-        // status: -1:全部  0：待同意、1:待收款、2：待确认、3：待评价 4已完成
-        // tabs:    0：全部  1：待同意、 2、待收款、 3 待确认 4 待评价 5 已完
+        // status: -1:全部  0：待同意、1:工作完成、2：工作完成、3：待评价 4已完成
+        // tabs:    0：全部  1：待同意、 2、工作完成、 3 工作完成 4 待评价 5 已完
         const status = parseInt(options.status)
         const role = parseInt(options.role)
         wx.setNavigationBarTitle({

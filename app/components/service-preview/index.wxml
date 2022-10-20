@@ -1,5 +1,5 @@
-<view class="container" bind:tap="handleSelect">
-    <view class="left">
+<view class="container">
+    <view class="left" bind:tap="handleSelect">
         <view class="type-tag">
             {{service.type === serviceType.PROVIDE ? '在提供' : '正在找'}}
         </view>
@@ -16,7 +16,7 @@
         <view class="row">
             <view class="publisher">
                 <i-avatar shape="circle" src="{{service.publisher.avatar}}" text="{{service.publisher.nickname}}"
-                          size="40" fontSize="22"></i-avatar>
+                          size="70" fontSize="30"></i-avatar>
             </view>
             <view wx:if="{{service.type === serviceType.PROVIDE}}" class="score">★ {{service.score}}</view>
         </view>
@@ -24,13 +24,13 @@
             <view class="publish-date">{{service.create_time}}</view>
         </view>
         <view class="row row-last">
-            <view>
-                <text class="label">￥</text>{{service.price}}
+           <view class="price"  bind:tap="handleChat">
+                <text class="label"></text>电话商量
             </view>
-            <view class="price">
-                <text class="label"></text>去预约挖机
+            <view bind:tap="handleSelect">
+                <text class="label"></text>预约挖机
             </view>
-            <view wx:if="{{service.type === serviceType.PROVIDE}}" class="sales-volume">已售 {{service.sales_volume}}</view>
+            <view wx:if="{{service.type === serviceType.PROVIDE}}" class="sales-volume">已完成 {{service.sales_volume}}</view>
         </view>
     </view>
 </view>
