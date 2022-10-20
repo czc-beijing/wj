@@ -24,8 +24,11 @@
             <view class="publish-date">{{service.create_time}}</view>
         </view>
         <view class="row row-last">
-            <view class="price">
+            <view>
                 <text class="label">￥</text>{{service.price}}
+            </view>
+            <view class="price">
+                <text class="label"></text>去预约挖机
             </view>
             <view wx:if="{{service.type === serviceType.PROVIDE}}" class="sales-volume">已售 {{service.sales_volume}}</view>
         </view>
