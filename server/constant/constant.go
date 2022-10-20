@@ -21,6 +21,7 @@ const (
 
 	LoginFailed = "登录失败"
 
-	SaveSuccess = "保存成功"
-	SaveFailed  = "保存失败"
+	SaveSuccess       = "保存成功"
+	SaveFailed        = "保存失败"
+	ParamInvalidAdder = "地址信息必填"
 )

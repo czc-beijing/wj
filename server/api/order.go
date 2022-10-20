@@ -28,6 +28,10 @@ func (o *AppOrder) CreateOrder(context *gin.Context) {
 		response.Failed(constant.ParamInvalid, context)
 		return
 	}
+	if len(param.Address.DetailInfo) <= 0 {
+		response.Failed(constant.ParamInvalidAdder, context)
+		return
+	}
 	_, exists = context.Get("openId")
 	if !exists {
 		response.Failed(constant.ParamInvalid, context)
