@@ -8,7 +8,7 @@ const serviceModel = new Service()
 Page({
     data: {
         loading: true,
-        tabs: ['全部'],
+        tabs: ['军明挖机家族'],
         serviceList: [],
         currentCategoryId: 0,
         multiple: 0,

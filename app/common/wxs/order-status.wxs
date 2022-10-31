@@ -8,7 +8,7 @@ var convert = function (status) {
             statusText = '工作中'
             break;
         case 2:
-            statusText = '待确认'
+            statusText = '工作完成'
             break;
         case 3:
             statusText = '待评价'

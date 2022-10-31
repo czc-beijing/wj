@@ -72,13 +72,13 @@
 }
 
 .publisher-avatar {
-    margin-right: 10rpx;
+    margin-right: 100rpx;
 }
 
 .avatar {
-    width: 40rpx;
-    height: 40rpx;
-    border-radius: 20rpx;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
 }
 
 .score {

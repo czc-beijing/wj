@@ -10,6 +10,11 @@ Component({
     methods: {
         handleSelect() {
             this.triggerEvent('select', { service: this.properties.service })
+        },
+        handleChat() {
+             wx.makePhoneCall({
+          phoneNumber: '13429208394'
+        })
         }
-    }
+  }
 });

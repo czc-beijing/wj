@@ -24,13 +24,10 @@
                 </view>
                 <view wx:if="{{service.type === serviceType.PROVIDE}}" class="score">★ {{service.score}}</view>
             </view>
-            <view class="row">
-                <view class="create-time">{{service.create_time}}</view>
-            </view>
             <view class="row row-space-between">
-                <view class="price">
-                    <text class="label">￥</text>{{service.price}}
-                </view>
+               <view class="price" bind:tap="handleChat">
+                <text class="label"></text>电话商量
+               </view>
                 <view class="sales-volume" wx:if="{{service.type === service.type === serviceType.PROVIDE}}">已售 {{service.sales_volume}}</view>
             </view>
             <view class="row">
