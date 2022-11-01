@@ -9,7 +9,6 @@ type Config struct {
 	Cron         Cron         `mapstructure:"cron"`
 	Code2Session Code2Session `mapstructure:"code2Session"`
 	Feedback     Feedback     `mapstructure:"feedback"`
-	Sms          Sms          `mapstructure:"sms"`
 }
 
 // 服务启动端口号配置
@@ -52,9 +51,4 @@ type Feedback struct {
 	QqSmtp        string `mapstructure:"qqSmtp"`
 	QqEmail       string `mapstructure:"qqEmail"`
 	QqEmailSecret string `mapstructure:"qqEmailSecret"`
-}
-
-type Sms struct {
-	Key     string `mapstructure:"key"`
-	Secrect string `mapstructure:"secrect"`
 }

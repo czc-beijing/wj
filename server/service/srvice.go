@@ -29,7 +29,7 @@ func (s *AppServiceService) GetList(c *gin.Context, param app.ServiceQueryParam)
 
 	var ServiceList []app.ServiceInfo
 	var Service []app.Service
-	rows := common.NewRestPage(param.Page, "Service", &app.Service{
+	rows := common.NewRestPage(param.Page, "service", &app.Service{
 		CategoryId: param.CategoryId,
 		Sid:        param.Sid,
 		Status:     constant.ServiceStatusPublish,
@@ -93,7 +93,7 @@ func (s *AppServiceService) GetList(c *gin.Context, param app.ServiceQueryParam)
 // 获取服务详情
 func (s *AppServiceService) GetInfo(id uint64) *app.ServiceInfo {
 	var ServiceData *app.Service
-	_ = global.Db.Table("Service").Where("id = ?", id).First(&ServiceData).RowsAffected
+	_ = global.Db.Table("service").Where("id = ?", id).First(&ServiceData).RowsAffected
 	if ServiceData.Id == 0 {
 		return nil
 	}
@@ -293,9 +293,9 @@ func (s *AppServiceService) TodayData(c *gin.Context, param app.UserServiceQuery
 	prs := "open_id = ? and sid = ? and type = ? and status = 2"
 	ras := "open_id = ? and sid = ? and type = ? and status = 3"
 	ServiceDate := app.TodayDate{}
-	global.Db.Table("Service").Where(pps, param.OpenId, param.Sid, param.Type).Count(&ServiceDate.Pending)
-	global.Db.Table("Service").Where(pds, param.OpenId, param.Sid, param.Type).Count(&ServiceDate.Unpublished)
-	global.Db.Table("Service").Where(prs, param.OpenId, param.Sid, param.Type).Count(&ServiceDate.Published)
-	global.Db.Table("Service").Where(ras, param.OpenId, param.Sid, param.Type).Count(&ServiceDate.OffShelves)
+	global.Db.Table("service").Where(pps, param.OpenId, param.Sid, param.Type).Count(&ServiceDate.Pending)
+	global.Db.Table("service").Where(pds, param.OpenId, param.Sid, param.Type).Count(&ServiceDate.Unpublished)
+	global.Db.Table("service").Where(prs, param.OpenId, param.Sid, param.Type).Count(&ServiceDate.Published)
+	global.Db.Table("service").Where(ras, param.OpenId, param.Sid, param.Type).Count(&ServiceDate.OffShelves)
 	return ServiceDate
 }

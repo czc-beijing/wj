@@ -27,7 +27,7 @@ func (o *AppOrderService) Create(c *gin.Context, param app.OrderCreateParam) uin
 	sid, _ := c.Get("sid")
 	//查询发布者信息
 	var ServiceInfo app.Service
-	global.Db.Table("Service").Where(map[string]interface{}{"id": param.ServiceID}).First(&ServiceInfo)
+	global.Db.Table("service").Where(map[string]interface{}{"id": param.ServiceID}).First(&ServiceInfo)
 	if ServiceInfo.Id <= 0 {
 		return 0
 	}

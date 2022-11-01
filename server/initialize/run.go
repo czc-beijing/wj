@@ -1,14 +1,10 @@
 package initialize
 
-import (
-	"wj/log"
-	"wj/utils"
-)
+import "wj/log"
 
 func Run() {
 	log.NewLog() //初始化日志
 	LoadConfig()
-	utils.SendSms()
 	Mysql()
 	Redis()
 	go Cron()
